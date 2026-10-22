@@ -3,7 +3,7 @@
 
 ## Modelo logico
 
-![Diagrama ER do banco de dados](diagrama-er.png)
+![Diagrama ER do banco de dados](images/diagrama-er.png.png)
 
 
 
