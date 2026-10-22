@@ -3,7 +3,7 @@
 
 ## Modelo logico
 
-![Uploading 662ce034-40d6-4e7c-b463-f2e17a82cbb3.png…]()
+![Diagrama ER do banco de dados](diagrama-er.png)
 
 
 
