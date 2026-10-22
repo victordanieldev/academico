@@ -1,6 +1,12 @@
 <h1> Trabalho de banco de dados formula 1</h1>
 
 
+## Modelo logico
+
+![Uploading 662ce034-40d6-4e7c-b463-f2e17a82cbb3.png…]()
+
+
+
 ## Objetivos
 
 <li>  Criar db_Formula1 (analisar e entender o cenário)</li>
