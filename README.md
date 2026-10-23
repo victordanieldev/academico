@@ -9,8 +9,8 @@ Atualmente, o repositório reúne atividades desenvolvidas em **linguagem C** na
 ## 💻 Linguagem utilizada
 
 - C 
-- HTML 
-- CSS
+- HTML (linguagem de marcaçao )
+- CSS (linguagem de estilo)
 - SQL , MYSQL
 - Javascript
 
@@ -30,5 +30,5 @@ Atividades desenvolvidas durante a disciplina:
 
 ## Modelagem de banco de dados
 
-  Atividades desenvolvidas durante a disciplina: [ Repositório Desenvolvimento em Algoritmos e Pensamento Computacional](https://github.com/victordanieldev/academico/tree/main/Desenvolvimento%20em%20Algoritimos%20e%20pensamentos%20computacionais%20)
+Atividades desenvolvidas durante a disciplina: [ Repositório Desenvolvimento em Algoritmos e Pensamento Computacional](https://github.com/victordanieldev/academico/tree/main/Desenvolvimento%20em%20Algoritimos%20e%20pensamentos%20computacionais%20)
 ---
