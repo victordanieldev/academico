@@ -24,8 +24,8 @@ Atividades desenvolvidas durante a disciplina: [ Repositório Desenvolvimento em
 
 
 ### Desenvolvimento Front-End Para Web
+Atividades desenvolvidas durante a disciplina: [ Repositório Desenvolvimento em Algoritmos e Pensamento Computacional](https://github.com/victordanieldev/academico/tree/main/front-end%20para%20web)
 
-Atividades desenvolvidas durante a disciplina: [ Repositório Desenvolvimento em Algoritmos e Pensamento Computacional](https://github.com/victordanieldev/academico/tree/main/Desenvolvimento%20em%20Algoritimos%20e%20pensamentos%20computacionais%20)
 ---
 
 ## Modelagem de banco de dados
