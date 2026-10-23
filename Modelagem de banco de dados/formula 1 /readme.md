@@ -31,3 +31,7 @@
 <li> Retorne para cada cod_pais, a média salarial dos empregados.</li>
 <li> Exiba todos os diferentes valores dos salários contidos na tabela pilotos ordenados em ordem
 crescente de valor.</li>
+
+## Codigo SQL
+
+[📄 Clique aqui para visualizar o arquivo SQL](./formula1.sql)
