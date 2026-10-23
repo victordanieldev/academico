@@ -30,5 +30,6 @@ Atividades desenvolvidas durante a disciplina:
 
 ## Modelagem de banco de dados
 
-Atividades desenvolvidas durante a disciplina: [ Repositório Desenvolvimento em Algoritmos e Pensamento Computacional](https://github.com/victordanieldev/academico/tree/main/Desenvolvimento%20em%20Algoritimos%20e%20pensamentos%20computacionais%20)
+Atividades desenvolvidas durante a disciplina: [ Repositório banco de dados]([https://github.com/victordanieldev/academico/tree/main/Desenvolvimento%20em%20Algoritimos%20e%20pensamentos%20computacionais%20](https://github.com/victordanieldev/academico/tree/main/Modelagem%20de%20banco%20de%20dados))
+
 ---
