@@ -19,7 +19,7 @@ Atualmente, o repositório reúne atividades desenvolvidas em **linguagem C** na
 
 ### Algoritmos e Pensamento Computacional
 
-Atividades desenvolvidas durante a disciplina: Desenvolvimento em Algoritmos e Pensamento Computacional
+Atividades desenvolvidas durante a disciplina:[ Desenvolvimento em Algoritmos e Pensamento Computacional](https://github.com/victordanieldev/academico/tree/main/Desenvolvimento%20em%20Algoritimos%20e%20pensamentos%20computacionais%20)
 
 
 ### Desenvolvimento Front-End Para Web
