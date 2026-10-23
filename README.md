@@ -10,7 +10,8 @@ Atualmente, o repositório reúne atividades desenvolvidas em **linguagem C** na
 
 - C 
 - HTML 
-- CSS 
+- CSS
+- SQL , MYSQL
 
 ---
 
