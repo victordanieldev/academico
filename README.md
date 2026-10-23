@@ -19,8 +19,8 @@ Atualmente, o repositório reúne atividades desenvolvidas em **linguagem C** na
 
 ### Algoritmos e Pensamento Computacional
 
-Atividades desenvolvidas durante a disciplina: **🔗 Acessar repositório da disciplina
-**
+Atividades desenvolvidas durante a disciplina: 🔗 Acessar repositório da disciplina
+
 
 ### Desenvolvimento Front-End Para Web
 
