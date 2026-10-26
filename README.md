@@ -2,7 +2,7 @@
 
 Repositório destinado à organização das atividades acadêmicas desenvolvidas durante minha graduação em **Engenharia de Software**.
 
-Atualmente, o repositório reúne atividades desenvolvidas em **linguagem C** na disciplina de **Algoritmos e Pensamento Computacional**. Em breve, também serão adicionadas atividades da disciplina de **Desenvolvimento Front-End para Web**, utilizando **HTML e CSS**.
+Atualmente, o repositório reúne atividades desenvolvidas em **linguagem C** na disciplina de **Algoritmos e Pensamento Computacional** , **linguagem SQL/MYSQL** na disciplina de banco de dados e atividades da disciplina de **Desenvolvimento Front-End para Web**, utilizando **HTML, CSS e JavaScript**.
 
 ---
 
