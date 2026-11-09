@@ -8,6 +8,8 @@ Atualmente, o repositório reúne atividades desenvolvidas em **linguagem C** na
 
 ## 💻 Linguagem utilizada
 
+<h1> 2 Semestre </h1>
+
 - C 
 - HTML (linguagem de marcaçao )
 - CSS (linguagem de estilo)
