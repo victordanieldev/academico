@@ -5,10 +5,11 @@ Repositório destinado à organização das atividades acadêmicas desenvolvidas
 Atualmente, o repositório reúne atividades desenvolvidas em **linguagem C** na disciplina de **Algoritmos e Pensamento Computacional** , **linguagem SQL/MYSQL** na disciplina de banco de dados e atividades da disciplina de **Desenvolvimento Front-End para Web**, utilizando **HTML, CSS e JavaScript**.
 
 ---
+<h1> 2 Semestre </h1>
 
 ## 💻 Linguagem utilizada
 
-<h1> 2 Semestre </h1>
+
 
 - C 
 - HTML (linguagem de marcaçao )
