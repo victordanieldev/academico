@@ -56,7 +56,7 @@ PAGAMENTO
 <li> id_pagamento (chave primária)</li>
 <li> valor</li>
 
-Relacionamentos e cardinalidades
+## Relacionamentos e cardinalidades
 
 1. CLIENTE — REALIZA — PEDIDO (1:N)
 Um cliente pode realizar vários pedidos, mas cada pedido pertence a apenas um 
