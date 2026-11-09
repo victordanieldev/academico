@@ -30,27 +30,27 @@ principais informações do restaurante. Cada entidade possui uma chave primári
 sua identificação e um atributo adicional. Entidades e atributos
 
 CLIENTE
-• id_cliente (chave primária)
-• nome
+<li>  id_cliente (chave primária)
+<li>nome</li>
 
 FUNCIONÁRIO
-• id_funcionario (chave primária)
-• nome
+<li> id_funcionario (chave primária)</li>
+<li> nome</li>
 PRODUTO
-• id_produto (chave primária)
-• nome
-PEDIDO
+<li> id_produto (chave primária)</li>
+<li>nome</li>
 
-• id_pedido (chave primária)
-• data
+PEDIDO
+<li>id_pedido (chave primária)</li>
+<li> data</li>
 
 ITEM_PEDIDO
-• id_item (chave primária)
-• quantidade
+<li> id_item (chave primária)</li>
+<li> quantidade</li>
 
 PAGAMENTO
-• id_pagamento (chave primária)
-• valor
+<li> id_pagamento (chave primária)</li>
+<li> valor</li>
 
 Relacionamentos e cardinalidades
 
