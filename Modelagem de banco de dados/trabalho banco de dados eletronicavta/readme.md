@@ -1,6 +1,7 @@
 ## MODELAGEM CONCEITUAL
 
 1.1 Descrição do cenário (Mini-Mundo)
+
 Uma loja eletronica precisa de um sistema para organizar suas atividades e facilitar o 
 controle das informações do dia a dia. Esse sistema será utilizado para registrar 
 clientes, funcionários, produtos do cardápio, pedidos, itens dos pedidos e pagamentos.
@@ -25,6 +26,7 @@ funcionários, produtos, pedidos e pagamentos, facilitando o acompanhamento das
 atividades.
 
 1.2 Modelo Entidade-Relacionamento (MER)
+
 A partir do cenário descrito, foram identificadas seis entidades para representar as 
 principais informações do restaurante. Cada entidade possui uma chave primária para 
 sua identificação e um atributo adicional. Entidades e atributos
