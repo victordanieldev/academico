@@ -1,7 +1,7 @@
--- MODELAGEM CONCEITUAL
+## MODELAGEM CONCEITUAL
 
 1.1 Descrição do cenário (Mini-Mundo)
-Um restaurante precisa de um sistema para organizar suas atividades e facilitar o 
+Uma loja eletronica precisa de um sistema para organizar suas atividades e facilitar o 
 controle das informações do dia a dia. Esse sistema será utilizado para registrar 
 clientes, funcionários, produtos do cardápio, pedidos, itens dos pedidos e pagamentos.
 Os clientes terão um cadastro para que o restaurante consiga identificá-los e 
