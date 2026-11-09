@@ -82,6 +82,7 @@ apenas um pedido.
 Pedido: (1,1) | Pagamento: (1,1)
 
 ## Diagrama MER
+![Diagrama ER do banco de dados](images/conceitual.png)
 
 O diagrama conceitual foi elaborado no BrModelo, representando as seis entidades, 
 seus atributos, as chaves primárias, os relacionamentos e as cardinalidades definidos 
