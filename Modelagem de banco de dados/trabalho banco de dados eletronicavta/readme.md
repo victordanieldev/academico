@@ -86,3 +86,5 @@ Pedido: (1,1) | Pagamento: (1,1)
 O diagrama conceitual foi elaborado no BrModelo, representando as seis entidades, 
 seus atributos, as chaves primárias, os relacionamentos e as cardinalidades definidos 
 nesta etapa.
+
+[📄 Clique aqui para visualizar o arquivo SQL](./eletronicosvta)
