@@ -29,7 +29,9 @@ atividades.
 
 A partir do cenário descrito, foram identificadas seis entidades para representar as 
 principais informações do restaurante. Cada entidade possui uma chave primária para 
-sua identificação e um atributo adicional. Entidades e atributos
+sua identificação e um atributo adicional. 
+
+## Entidades e atributos
 
 CLIENTE
 <li>  id_cliente (chave primária)
