@@ -312,13 +312,13 @@ select count(*) as qtd_produtos,
        sum(estoque) as estoque_total
 from produto;
 
--- SUM e AVG sobre coluna calculada: valor total e ticket médio dos itens vendidos
+--  valor total e ticket médio dos itens vendidos
 
 select sum(quantidade * preco_unitario) as faturamento_itens,
        avg(quantidade * preco_unitario) as media_por_item
 from item_pedido;
 
--- MAX e MIN de data: primeiro e último pedido
+--  primeiro e último pedido
 select min(data_pedido) as primeiro_pedido, max(data_pedido) as ultimo_pedido
 from pedido;
 
@@ -432,7 +432,7 @@ from pagamento
 group by forma
 having sum(valor) > 1000;
 
--- Pedidos cujo valor total (soma dos itens) é maior que 1000
+-- Pedidos cujo valor total  é maior que 1000
 select id_pedido, sum(quantidade * preco_unitario) as total_pedido
 from item_pedido
 group by id_pedido
@@ -671,7 +671,7 @@ end$$
 delimiter ;
 
 
---  auditoria de alteração de salário (grava em log_salario)
+--  auditoria de alteração de salário 
 delimiter $$
 
 create trigger trg_log_salario
