@@ -62,7 +62,7 @@ create table log_salario(
     data_alteracao datetime
 );
 
---foreign key pedido 
+/* foreign key pedido */
 
 alter table pedido add column cod_func int;
 alter table pedido add column cod_cliente int;
@@ -272,7 +272,7 @@ select *
 from funcionario
 where (cargo = 'Vendedor' or cargo = 'Vendedora') and salario > 2500;
 
--- [NOVO] AND + OR + NOT combinados: periféricos ou áudio, que NÃO custem mais de 200
+-- AND + OR + NOT combinados: periféricos ou áudio, que NÃO custem mais de 200
 select nome, categoria, preco
 from produto
 where (categoria = 'Periféricos' or categoria = 'Áudio') and not preco > 200;
@@ -438,22 +438,6 @@ from item_pedido
 group by id_pedido
 having sum(quantidade * preco_unitario) > 1000
 order by total_pedido desc;
-
-
--- Produtos com preço acima da média
-select nome, preco
-from produto
-where preco > (select avg(preco) from produto);
-
--- Funcionário com o maior salário
-select nome, salario
-from funcionario
-where salario = (select max(salario) from funcionario);
-
--- Clientes que já fizeram pelo menos um pedido
-select nome
-from cliente
-where cod_cliente in (select cod_cliente from pedido);
 
 
 -- Produtos com preço acima da média
