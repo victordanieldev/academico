@@ -21,6 +21,7 @@ create table produto(
     estoque int
 );
 
+
 create table funcionario(
     cod_func int primary key not null,
     nome varchar(100),
@@ -53,6 +54,14 @@ create table item_pedido(
 
 );
 
+create table log_salario(
+    id_log int primary key auto_increment,
+    cod_func int,
+    salario_antigo decimal(10,2),
+    salario_novo decimal(10,2),
+    data_alteracao datetime
+);
+
 /* foreign key pedido */
 
 alter table pedido add column cod_func int;
@@ -71,6 +80,7 @@ alter table item_pedido add column id_pedido int;
 alter table item_pedido add column cod_produto int;
 alter table item_pedido add foreign key (id_pedido) references pedido(id_pedido);
 alter table item_pedido add foreign key (cod_produto) references produto(cod_produto);
+
 
 -- cliente 
 
@@ -99,8 +109,6 @@ insert into produto(cod_produto, nome, categoria, preco, estoque) values
 (4, 'Monitor 24"',        'Monitores',    900.00, 20),
 (5, 'Headset gamer',      'Áudio',        180.00, 25),
 (6, 'Webcam HD',          'Periféricos',  150.00, 40);
-
-
 
 
 -- pedido 
@@ -168,6 +176,14 @@ from cliente;
 select distinct categoria 
 from produto;
 
+--  DISTINCT em mais de uma coluna 
+select distinct categoria, preco
+from produto;
+
+-- COUNT com DISTINCT: quantas cidades diferentes existem
+select count(distinct cidade) as qtd_cidades
+from cliente;
+
 
 -- Valor total de cada item 
 select id_item, id_pedido, quantidade, preco_unitario,  quantidade * preco_unitario as subtotal
@@ -191,6 +207,14 @@ from produto;
 
 -- Preço + frete fixo de R$ 15,00
 select nome, preco, preco + 15 as preco_com_frete
+from produto;
+
+--  Divisão: valor de cada parcela em 3x sem juros
+select nome, preco, round(preco / 3, 2) as parcela_3x
+from produto;
+
+-- Várias operações na mesma coluna calculada: 10% de desconto + frete de R$ 15
+select nome, preco, round(preco * 0.90 + 15, 2) as preco_final
 from produto;
 
 -- Maior que
@@ -223,10 +247,10 @@ select *
 from pedido 
 where situacao <> 'Cancelado';
 
--- Funcionários que ainda trabalham 
-select * 
-from funcionario 
-where demissao is null;
+-- funcionários com data preenchida
+select nome, cargo, demissao
+from funcionario
+where demissao is not null;
 
 
 select * 
@@ -248,7 +272,13 @@ select *
 from funcionario
 where (cargo = 'Vendedor' or cargo = 'Vendedora') and salario > 2500;
 
+-- [NOVO] AND + OR + NOT combinados: periféricos ou áudio, que NÃO custem mais de 200
+select nome, categoria, preco
+from produto
+where (categoria = 'Periféricos' or categoria = 'Áudio') and not preco > 200;
 
+
+-- Total recebido (pagamentos aprovados)
 select sum(valor) as total_recebido
 from pagamento
 where situacao = 'Aprovado';
@@ -282,6 +312,16 @@ select count(*) as qtd_produtos,
        sum(estoque) as estoque_total
 from produto;
 
+-- SUM e AVG sobre coluna calculada: valor total e ticket médio dos itens vendidos
+
+select sum(quantidade * preco_unitario) as faturamento_itens,
+       avg(quantidade * preco_unitario) as media_por_item
+from item_pedido;
+
+-- MAX e MIN de data: primeiro e último pedido
+select min(data_pedido) as primeiro_pedido, max(data_pedido) as ultimo_pedido
+from pedido;
+
 
 -- Nomes de clientes que começam com 'A'
 select *
@@ -302,7 +342,6 @@ where nome like '%gamer%' or nome like '%mecânico%';
 select * 
 from cliente 
 where nome like '_a%';
-
 
 -- Produtos com preço entre 100 e 300
 select * 
@@ -355,7 +394,6 @@ select categoria, nome, preco
 from produto
 order by categoria asc, preco desc;
 
-
 -- Quantidade de produtos por categoria
 select categoria, count(*) as qtd_produtos
 from produto
@@ -380,6 +418,7 @@ group by forma;
 select cidade, count(*) as qtd_clientes
 from cliente
 group by cidade;
+
 
 -- Categorias com mais de 1 produto
 select categoria, count(*) as qtd_produtos
@@ -416,28 +455,23 @@ select nome
 from cliente
 where cod_cliente in (select cod_cliente from pedido);
 
--- Clientes que nunca fizeram pedido
+
+-- Produtos com preço acima da média
+select nome, preco
+from produto
+where preco > (select avg(preco) from produto);
+
+-- Funcionário com o maior salário
+select nome, salario
+from funcionario
+where salario = (select max(salario) from funcionario);
+
+-- Clientes que já fizeram pelo menos um pedido
 select nome
 from cliente
-where cod_cliente not in (select cod_cliente from pedido);
+where cod_cliente in (select cod_cliente from pedido);
 
--- Produtos que já foram vendidos em algum pedido
-select nome
-from produto
-where cod_produto in (select cod_produto from item_pedido);
-
--- Produtos que nunca foram vendidos
-select nome
-from produto
-where cod_produto not in (select cod_produto from item_pedido);
-
--- Pedidos com pagamento aprovado 
-select * from pedido p
-where exists (select 1 from pagamento pg where pg.id_pedido = p.id_pedido and pg.situacao = 'Aprovado');
-              
-
-
- -- pedido com nome do cliente
+-- pedido com nome do cliente
 select p.id_pedido, c.nome as cliente, p.data_pedido, p.situacao
 from pedido p
 inner join cliente c on p.cod_cliente = c.cod_cliente;
@@ -478,7 +512,7 @@ select p.id_pedido, f.nome as funcionario
 from pedido p
 right join funcionario f on p.cod_func = f.cod_func;
 
--- : total gasto por cliente
+--  total gasto por cliente
 select c.nome, sum(ip.quantidade * ip.preco_unitario) as total_gasto
 from cliente c
 join pedido p       on c.cod_cliente = p.cod_cliente
@@ -514,8 +548,6 @@ from cliente
 union all
 select cidade from cliente where cidade = 'Brasília';
 
-
-
 delimiter $$
 
 create procedure sp_total_pedido(in p_id_pedido int, out p_total decimal(10,2))
@@ -524,7 +556,7 @@ begin
     into p_total
     from item_pedido
     where id_pedido = p_id_pedido;
-end;
+end$$
 
 delimiter ;
 
@@ -541,7 +573,7 @@ begin
 	join item_pedido ip on p.id_pedido = ip.id_pedido
     where p.cod_cliente = p_cod_cliente
     group by p.id_pedido, p.data_pedido, p.situacao;
-end;
+end$$
 
 delimiter ;
 
@@ -565,7 +597,7 @@ begin
 
     insert into pagamento (id_pag, id_pedido, forma, valor, data_pagamento, situacao)
     values (p_id_pag, p_id_pedido, p_forma, v_total, curdate(), 'Aprovado');
-end;
+end$$
 
 delimiter ;
 
@@ -578,18 +610,78 @@ begin
     update funcionario
     set salario = salario * (1 + p_percentual / 100)
     where cargo = p_cargo;
-end;
+end$$
 
 delimiter ;
 
 
+--  impede vender mais do que há em estoque
+delimiter $$
+
+create trigger trg_valida_estoque
+before insert on item_pedido
+for each row
+begin
+    declare v_estoque int;
+
+    select estoque into v_estoque
+    from produto
+    where cod_produto = new.cod_produto;
+
+    if v_estoque < new.quantidade then
+        signal sqlstate '45000'
+        set message_text = 'Estoque insuficiente para este produto';
+    end if;
+end$$
+
+delimiter ;
 
 
+--  dá baixa automática no estoque
+delimiter $$
+
+create trigger trg_baixa_estoque
+after insert on item_pedido
+for each row
+begin
+    update produto
+    set estoque = estoque - new.quantidade
+    where cod_produto = new.cod_produto;
+end$$
+
+delimiter ;
 
 
+--  ao cancelar, devolve os itens ao estoque
+delimiter $$
+
+create trigger trg_devolve_estoque
+after update on pedido
+for each row
+begin
+    -- só age quando a situação MUDA para 'Cancelado' 
+    if new.situacao = 'Cancelado' and old.situacao <> 'Cancelado' then
+        update produto pr
+        join item_pedido ip on pr.cod_produto = ip.cod_produto
+        set pr.estoque = pr.estoque + ip.quantidade
+        where ip.id_pedido = new.id_pedido;
+    end if;
+end$$
+
+delimiter ;
 
 
+--  auditoria de alteração de salário (grava em log_salario)
+delimiter $$
 
+create trigger trg_log_salario
+after update on funcionario
+for each row
+begin
+    if old.salario <> new.salario then
+        insert into log_salario (cod_func, salario_antigo, salario_novo, data_alteracao)
+        values (old.cod_func, old.salario, new.salario, now());
+    end if;
+end$$
 
-
-
+delimiter ;
