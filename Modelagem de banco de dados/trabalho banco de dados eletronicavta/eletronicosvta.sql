@@ -62,7 +62,7 @@ create table log_salario(
     data_alteracao datetime
 );
 
-/* foreign key pedido */
+--foreign key pedido 
 
 alter table pedido add column cod_func int;
 alter table pedido add column cod_cliente int;
