@@ -180,7 +180,7 @@ from produto;
 select distinct categoria, preco
 from produto;
 
--- COUNT com DISTINCT: quantas cidades diferentes existem
+-- quantas cidades diferentes existem
 select count(distinct cidade) as qtd_cidades
 from cliente;
 
@@ -272,7 +272,7 @@ select *
 from funcionario
 where (cargo = 'Vendedor' or cargo = 'Vendedora') and salario > 2500;
 
--- AND + OR + NOT combinados: periféricos ou áudio, que NÃO custem mais de 200
+-- periféricos ou áudio, que NÃO custem mais de 200
 select nome, categoria, preco
 from produto
 where (categoria = 'Periféricos' or categoria = 'Áudio') and not preco > 200;
@@ -532,6 +532,8 @@ from cliente
 union all
 select cidade from cliente where cidade = 'Brasília';
 
+-- Calcula total de um pedido
+
 delimiter $$
 
 create procedure sp_total_pedido(in p_id_pedido int, out p_total decimal(10,2))
@@ -546,7 +548,7 @@ delimiter ;
 
 
 
-
+-- lista os pedido de um cliente
 delimiter $$
 
 create procedure sp_pedidos_cliente(in p_cod_cliente int)
@@ -563,7 +565,7 @@ delimiter ;
 
 
 
-
+-- registrar um pagamento de um pedido
 delimiter $$
 
 create procedure sp_registrar_pagamento(
@@ -586,6 +588,7 @@ end$$
 delimiter ;
 
 
+-- da aumento por cargo
 
 delimiter $$
 
@@ -599,27 +602,6 @@ end$$
 delimiter ;
 
 
---  impede vender mais do que há em estoque
-delimiter $$
-
-create trigger trg_valida_estoque
-before insert on item_pedido
-for each row
-begin
-    declare v_estoque int;
-
-    select estoque into v_estoque
-    from produto
-    where cod_produto = new.cod_produto;
-
-    if v_estoque < new.quantidade then
-        signal sqlstate '45000'
-        set message_text = 'Estoque insuficiente para este produto';
-    end if;
-end$$
-
-delimiter ;
-
 
 --  dá baixa automática no estoque
 delimiter $$
@@ -631,25 +613,6 @@ begin
     update produto
     set estoque = estoque - new.quantidade
     where cod_produto = new.cod_produto;
-end$$
-
-delimiter ;
-
-
---  ao cancelar, devolve os itens ao estoque
-delimiter $$
-
-create trigger trg_devolve_estoque
-after update on pedido
-for each row
-begin
-    -- só age quando a situação MUDA para 'Cancelado' 
-    if new.situacao = 'Cancelado' and old.situacao <> 'Cancelado' then
-        update produto pr
-        join item_pedido ip on pr.cod_produto = ip.cod_produto
-        set pr.estoque = pr.estoque + ip.quantidade
-        where ip.id_pedido = new.id_pedido;
-    end if;
 end$$
 
 delimiter ;
@@ -669,3 +632,20 @@ begin
 end$$
 
 delimiter ;
+
+-- trigger baixa estoque
+
+insert into item_pedido(id_item, id_pedido, cod_produto, quantidade, preco_unitario)
+values(10, 4, 2, 5, 80.00);
+select nome, estoque
+from produto
+where cod_produto = 2;
+
+
+-- trigger muda salario funcionario
+update funcionario 
+set salario = 3000
+where cod_func = 2;
+select *
+from log_salario
+
