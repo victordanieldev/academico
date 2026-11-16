@@ -69,7 +69,7 @@ alter table pedido add column cod_cliente int;
 alter table pedido add foreign key (cod_func) references funcionario(cod_func);
 alter table pedido add foreign key (cod_cliente) references cliente(cod_cliente);
 
-/* foreign key pagamento */
+-- foreign key pagamento 
 
 alter table pagamento add column id_pedido int;
 alter table pagamento add foreign key (id_pedido) references pedido(id_pedido);
@@ -94,7 +94,7 @@ insert into cliente(cod_cliente, nome, email, fone, cidade)values
 (4, 'Diego Rocha',    'diego.rocha@email.com',    '61991110004', 'Gama' ),
 (5, 'Elisa Ferreira', 'elisa.ferreira@email.com', '61991110005', 'Sobradinho' );
 
-/* funcionario */ 
+-- funcionario 
 
 insert into funcionario(cod_func, nome, cargo, salario, demissao) values
 (1, 'Marcos Oliveira', 'Vendedor',   2500.00, '2023-03-15'),
