@@ -1,10 +1,6 @@
 -- criaçao database
-
 create database db_eletronicosvta;
-
 use db_eletronicosvta;
-
-
 -- criaçao das tabales
 
 create table pedido(
@@ -57,10 +53,13 @@ create table item_pedido(
 create table log_salario(
     id_log int primary key auto_increment,
     cod_func int,
+    valor int,
     salario_antigo decimal(10,2),
     salario_novo decimal(10,2),
     data_alteracao datetime
 );
+
+
 
 -- foreign key pedido 
 
@@ -83,7 +82,6 @@ alter table item_pedido add foreign key (cod_produto) references produto(cod_pro
 
 -- foreign key log_salario
 alter table log_salario add foreign key(cod_func) references funcionario(cod_func);
-
 
 -- cliente 
 
@@ -640,6 +638,7 @@ from log_salario;
 -- Procedure total pedido
 call sp_total_pedido(1, @total);
 select @total AS total_pedido;
+
 
 -- Procedure pedidos cliente
 call sp_pedidos_cliente(1);
