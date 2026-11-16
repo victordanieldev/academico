@@ -74,12 +74,15 @@ alter table pedido add foreign key (cod_cliente) references cliente(cod_cliente)
 alter table pagamento add column id_pedido int;
 alter table pagamento add foreign key (id_pedido) references pedido(id_pedido);
 
-/* foreign key item_pedido */
+-- foreign key item_pedido 
 
 alter table item_pedido add column id_pedido int;
 alter table item_pedido add column cod_produto int;
 alter table item_pedido add foreign key (id_pedido) references pedido(id_pedido);
 alter table item_pedido add foreign key (cod_produto) references produto(cod_produto);
+
+-- foreign key log_salario
+alter table log_salario add foreign key(cod_func) references funcionario(cod_func);
 
 
 -- cliente 
@@ -588,21 +591,6 @@ end$$
 delimiter ;
 
 
--- da aumento por cargo
-
-delimiter $$
-
-create procedure sp_reajuste_salario(in p_cargo varchar(100), in p_percentual decimal(5,2))
-begin
-    update funcionario
-    set salario = salario * (1 + p_percentual / 100)
-    where cargo = p_cargo;
-end$$
-
-delimiter ;
-
-
-
 --  dá baixa automática no estoque
 delimiter $$
 
@@ -647,5 +635,17 @@ update funcionario
 set salario = 3000
 where cod_func = 2;
 select *
-from log_salario
+from log_salario;
 
+-- Procedure total pedido
+call sp_total_pedido(1, @total);
+select @total AS total_pedido;
+
+-- Procedure pedidos cliente
+call sp_pedidos_cliente(1);
+
+-- Procedure registrar pagamento
+call sp_registrar_pagamento(6, 3, 'Pix');
+select *
+from pagamento
+where id_pag = 6;
