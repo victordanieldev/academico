@@ -133,7 +133,7 @@ sistema-atendimento-clinico/
 └── .gitignore
 ```
 
-## 👨‍💻 Autor
+## 👨‍💻 Autor : Victor Daniel
 
 Projeto acadêmico desenvolvido para avaliação da disciplina de Programação em Linguagem C.
 
