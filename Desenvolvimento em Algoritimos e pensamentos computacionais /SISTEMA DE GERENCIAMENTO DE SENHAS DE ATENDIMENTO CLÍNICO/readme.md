@@ -1,6 +1,5 @@
 Sistema de Gerenciamento de Senhas de Atendimento Clínico
 Objetivo
-
 Desenvolver uma aplicação em linguagem C para gerenciar senhas de atendimento de uma clínica médica, organizando os pacientes em filas conforme suas categorias de prioridade.
 
 Funcionalidades
@@ -22,28 +21,26 @@ Estruturas (struct).
 Funções.
 Filas implementadas com vetores.
 Compilação
-
 É necessário possuir um compilador GCC instalado.
 
 Execute no terminal:
 
+
 bash
 gcc main.c -o atendimento
-
 Execução
-
 No Linux:
+
 
 bash
 ./atendimento
-
-
 No Windows:
+
 
 bash
 atendimento.exe
-
 Funções implementadas
+
 Função	Responsabilidade
 inicializarFila()	Inicializa as filas
 filaVazia()	Verifica se a fila está vazia
@@ -61,8 +58,8 @@ exibirPainel()	Exibe informações das filas
 menu()	Controla as opções do sistema
 main()	Inicializa e executa o programa
 Exemplo de utilização
-
 Cadastro de um paciente:
+
 
 text
 Nome: Maria
@@ -75,9 +72,8 @@ Obesidade: 0
 
 Paciente cadastrado com sucesso!
 Senha gerada: P001
-
-
 Exemplo de chamada:
+
 
 text
 ================================
@@ -87,7 +83,5 @@ Nome: Maria
 Senha: P001
 Categoria: PREFERENCIAL
 ================================
-
 Autor
-
 Projeto acadêmico desenvolvido para avaliação da disciplina de Programação em Linguagem C.
