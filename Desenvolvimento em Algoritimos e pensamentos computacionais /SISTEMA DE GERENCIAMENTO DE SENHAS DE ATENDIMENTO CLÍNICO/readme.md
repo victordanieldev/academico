@@ -55,7 +55,7 @@ Dentro de cada categoria, é respeitada a ordem de chegada (FIFO).
 
 **Observação:** as regras de classificação são didáticas e não substituem avaliação clínica ou legislação específica.
 
-## 🚀 Compilação
+##  Compilação
 
 É necessário possuir um compilador GCC instalado.
 
